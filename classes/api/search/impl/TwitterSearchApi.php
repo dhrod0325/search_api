@@ -22,10 +22,10 @@ class TwitterSearchApi extends BaseSearchApi
      * @param $query
      * @param array $args
      *
-     * 'oauth_access_token'        => "2841900320-2V9jbrIptnPpQyYuOVprcOe3UPGgft6iqvqKB8F",
-     * 'oauth_access_token_secret' => "glwOqLHNCpNZFKCCRgKnstG64KF8z7IvD9B2C77UoRFuq",
-     * 'consumer_key'              => "DaWfqIc44zDP0pflMo9RgeCMv",
-     * 'consumer_secret'           => "CSqQCNDdVXXOo4stRkF4VL4yYCPpJAo5lRrBqsBFBuG05Yh5lU"
+     * 'oauth_access_token'        => "",
+     * 'oauth_access_token_secret' => "",
+     * 'consumer_key'              => "",
+     * 'consumer_secret'           => ""
      *
      * @return mixed
      * @throws \Exception
