@@ -9,5 +9,5 @@
 namespace classes\api\search;
 
 interface SearchApi {
-	function getData( $query, $args = array() );
+	function getData($query, $args = array());
 }
