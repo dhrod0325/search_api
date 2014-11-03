@@ -11,19 +11,22 @@ namespace classes\api\search\impl;
 use classes\api\search\BaseSearchApi;
 
 class DaumSearchApi extends BaseSearchApi {
-	function getData( $query, $args = array() ) {
-		$params           = array();
-		$params['apikey'] = $this->getApiKey();
-		$params['q']      = $query;
+    function getData($query, $args = array()) {
+        if (!isset($this->settings['api_key']))
+            throw new \Exception('api_key required');
 
-		$params = array_merge( $params, $args );
+        $params = array();
+        $params['apikey'] = $this->getApiKey();
+        $params['q'] = $query;
 
-		$res = $this->client->get( $this->getApiUrl(), $params );
+        $params = array_merge($params, $args);
 
-		return simplexml_load_string( $res );
-	}
+        $res = $this->client->get($this->getApiUrl(), $params);
 
-	function getApiUrl() {
-		return 'http://apis.daum.net/search/web';
-	}
+        return simplexml_load_string($res);
+    }
+
+    function getApiUrl() {
+        return 'http://apis.daum.net/search/web';
+    }
 }

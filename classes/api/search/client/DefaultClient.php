@@ -9,47 +9,48 @@
 namespace classes\api\search\client;
 
 class DefaultClient implements SearchClient {
-	function get( $url, array $params = array(), $header = null ) {
-		if ( ! empty( $params ) ) {
-			if ( strpos( $url, '?' ) === false ) {
-				$url .= '?';
-			}
-			$url .= http_build_query( $params );
-		}
+    function get($url, array $params = array(), $header = null) {
+        if (!empty($params)) {
+            if (strpos($url, '?') === false) {
+                $url .= '?';
+            }
+            $url .= http_build_query($params);
+        }
 
-		$curl = $this->getDefaultCurl( $header );
-		curl_setopt( $curl, CURLOPT_URL, $url );
-		$result = curl_exec( $curl );
-		curl_close( $curl );
+        $curl = $this->getDefaultCurl($header);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        $result = curl_exec($curl);
 
-		return $result;
-	}
+        curl_close($curl);
 
-	function post( $url, array $params = array(), $header = null ) {
-		$curl = $this->getDefaultCurl( $header );
-		curl_setopt( $curl, CURLOPT_URL, $url );
-		curl_setopt( $curl, CURLOPT_POST, true );
-		curl_setopt( $curl, CURLOPT_POSTFIELDS, $params );
+        return $result;
+    }
 
-		$result = curl_exec( $curl );
-		curl_close( $curl );
+    function post($url, array $params = array(), $header = null) {
+        $curl = $this->getDefaultCurl($header);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
 
-		return $result;
-	}
+        $result = curl_exec($curl);
+        curl_close($curl);
 
-	function getDefaultCurl( $header = null ) {
-		$curl = curl_init();
+        return $result;
+    }
 
-		curl_setopt( $curl, CURLOPT_SSL_VERIFYPEER, false );
-		curl_setopt( $curl, CURLOPT_HEADER, false );
-		curl_setopt( $curl, CURLINFO_HEADER_OUT, false );
-		curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
-		curl_setopt( $curl, CURLINFO_HEADER_OUT, true );
+    function getDefaultCurl($header = null) {
+        $curl = curl_init();
 
-		if ( ! is_null( $header ) ) {
-			curl_setopt( $curl, CURLOPT_HTTPHEADER, $header );
-		}
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLINFO_HEADER_OUT, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLINFO_HEADER_OUT, true);
 
-		return $curl;
-	}
+        if (!is_null($header)) {
+            curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+        }
+
+        return $curl;
+    }
 } 
