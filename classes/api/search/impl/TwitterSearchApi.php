@@ -17,18 +17,6 @@ class TwitterSearchApi extends BaseSearchApi {
 		return 'https://api.twitter.com/1.1/search/tweets.json';
 	}
 
-	/**
-	 * @param $query
-	 * @param array $args
-	 *
-	 * 'oauth_access_token'        => "",
-	 * 'oauth_access_token_secret' => "",
-	 * 'consumer_key'              => "",
-	 * 'consumer_secret'           => ""
-	 *
-	 * @return mixed
-	 * @throws \Exception
-	 */
 	function getData( $query, $args = array() ) {
 		$twitter = new \TwitterAPIExchange( $this->settings );
 		$url     = 'https://api.twitter.com/1.1/search/tweets.json';

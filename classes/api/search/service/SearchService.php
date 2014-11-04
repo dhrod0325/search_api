@@ -16,11 +16,6 @@ class SearchService {
 	 */
 	private $searchApi;
 
-	/**
-	 * @param mixed $searchApi
-	 *
-	 * @return $this
-	 */
 	public function setSearchApi( SearchApi $searchApi ) {
 		$this->searchApi = $searchApi;
 

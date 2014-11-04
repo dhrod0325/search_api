@@ -10,7 +10,7 @@ namespace classes\api\search;
 
 use classes\api\search\client\DefaultClient;
 use classes\api\search\client\SearchClient;
-//
+
 abstract class BaseSearchApi implements SearchApi {
 	protected $client;
 	protected $settings = array();
