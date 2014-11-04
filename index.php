@@ -13,13 +13,11 @@ $twitter = new \classes\api\search\impl\TwitterSearchApi( array(
 	'consumer_secret'           => "CSqQCNDdVXXOo4stRkF4VL4yYCPpJAo5lRrBqsBFBuG05Yh5lU"
 ) );
 
-$naver  = new \classes\api\search\impl\NaverSearchApi( array( 'api_key' => '' ) );
-$daum   = new \classes\api\search\impl\DaumSearchApi( array( 'api_key' => '' ) );
+$naver  = new \classes\api\search\impl\NaverSearchApi( array( 'api_key' => 'c1b406b32dbbbbeee5f2a36ddc14067f ' ) );
+$daum   = new \classes\api\search\impl\DaumSearchApi( array( 'api_key' => '6d85d2a3b6720acc1156c4b65cf04eb11db16037' ) );
 $google = new \classes\api\search\impl\GoogleSearchApi();
 
-echo '<meta charset="utf-8">';
-
 $service = new \classes\api\search\service\SearchService();
-$service->setSearchApi( $facebook );
+$service->setSearchApi( $naver );
 
 print_r( $service->getData( '노트북' ) );
