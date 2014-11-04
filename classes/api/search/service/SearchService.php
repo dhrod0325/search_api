@@ -8,25 +8,26 @@
 
 namespace classes\api\search\service;
 
-
 use classes\api\search\SearchApi;
 
 class SearchService {
-    /**
-     * @var SearchApi
-     */
-    private $searchApi;
+	/**
+	 * @var SearchApi
+	 */
+	private $searchApi;
 
-    /**
-     * @param mixed $searchApi
-     * @return $this
-     */
-    public function setSearchApi(SearchApi $searchApi) {
-        $this->searchApi = $searchApi;
-        return $this;
-    }
+	/**
+	 * @param mixed $searchApi
+	 *
+	 * @return $this
+	 */
+	public function setSearchApi( SearchApi $searchApi ) {
+		$this->searchApi = $searchApi;
 
-    public function getData($query, $param = array()) {
-        return $this->searchApi->getData($query, $param);
-    }
+		return $this;
+	}
+
+	public function getData( $query, $param = array() ) {
+		return $this->searchApi->getData( $query, $param );
+	}
 }

@@ -12,30 +12,30 @@ use classes\api\search\client\DefaultClient;
 use classes\api\search\client\SearchClient;
 
 abstract class BaseSearchApi implements SearchApi {
-    protected $client;
-    protected $settings = array();
+	protected $client;
+	protected $settings = array();
 
-    function __construct($settings = array(), SearchClient $client = null) {
-        $this->settings = $settings;
+	function __construct( $settings = array(), SearchClient $client = null ) {
+		$this->settings = $settings;
 
-        if (is_null($client)) {
-            $this->client = new DefaultClient();
-        } else {
-            $this->client = $client;
-        }
-    }
+		if ( is_null( $client ) ) {
+			$this->client = new DefaultClient();
+		} else {
+			$this->client = $client;
+		}
+	}
 
-    public function setClient(SearchClient $client) {
-        $this->client = $client;
-    }
+	public function setClient( SearchClient $client ) {
+		$this->client = $client;
+	}
 
-    public function getClient() {
-        return $this->client;
-    }
+	public function getClient() {
+		return $this->client;
+	}
 
-    public function getApiKey() {
-        return $this->settings['api_key'];
-    }
+	public function getApiKey() {
+		return $this->settings['api_key'];
+	}
 
-    abstract function getApiUrl();
+	abstract function getApiUrl();
 }
