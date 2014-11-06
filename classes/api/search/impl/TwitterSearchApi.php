@@ -10,15 +10,13 @@ namespace classes\api\search\impl;
 
 use classes\api\search\BaseSearchApi;
 
-require_once dirname( __FILE__ ) . '/../../../../lib/TwitterAPIExchange.php';
-
 class TwitterSearchApi extends BaseSearchApi {
 	function getApiUrl() {
 		return 'https://api.twitter.com/1.1/search/tweets.json';
 	}
 
-	function getData( $query, $args = array() ) {
-		$twitter = new \TwitterAPIExchange( $this->settings );
+	function getData($query, $args = array()) {
+		$twitter = new \TwitterAPIExchange($this->settings);
 		$url     = 'https://api.twitter.com/1.1/search/tweets.json';
 
 		$params                = array();
@@ -26,12 +24,12 @@ class TwitterSearchApi extends BaseSearchApi {
 		$params['result_type'] = 'recent';
 		$params['lang']        = 'ko';
 
-		$params = array_merge( $params, $args );
-		$params = http_build_query( $params );
+		$params = array_merge($params, $args);
+		$params = http_build_query($params);
 
 		$requestMethod = 'GET';
-		$result        = $twitter->setGetfield( '?' . $params )->buildOauth( $url, $requestMethod )->performRequest();
+		$result        = $twitter->setGetfield('?' . $params)->buildOauth($url, $requestMethod)->performRequest();
 
-		return json_decode( $result );
+		return json_decode($result);
 	}
 }

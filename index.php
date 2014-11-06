@@ -1,23 +1,39 @@
 <?php
-function autoLoad( $className ) {
-	$path = str_replace( '\\', DIRECTORY_SEPARATOR, $className );
-	require_once $path . '.php';
-}
+require_once 'loader.php';
 
-spl_autoload_register( 'autoLoad' );
+use classes\api\search\impl\DaumSearchApi;
+use classes\api\search\impl\FacebookSearchApi;
+use classes\api\search\impl\GoogleSearchApi;
+use classes\api\search\impl\NaverSearchApi;
+use classes\api\search\impl\TwitterSearchApi;
+use classes\api\search\service\SearchService;
 
-$twitter = new \classes\api\search\impl\TwitterSearchApi( array(
-	'oauth_access_token'        => "",
+$twitter = new TwitterSearchApi(array(
+	'oauth_access_token' => "",
 	'oauth_access_token_secret' => "",
-	'consumer_key'              => "",
-	'consumer_secret'           => ""
-) );
+	'consumer_key' => "",
+	'consumer_secret' => ""
+));
 
-$naver  = new \classes\api\search\impl\NaverSearchApi( array( 'api_key' => ' ' ) );
-$daum   = new \classes\api\search\impl\DaumSearchApi( array( 'api_key' => '' ) );
-$google = new \classes\api\search\impl\GoogleSearchApi();
+$naver = new NaverSearchApi(
+	array('api_key' => ' ')
+);
 
-$service = new \classes\api\search\service\SearchService();
-$service->setSearchApi( $naver );
+$daum = new DaumSearchApi(
+	array('api_key' => '')
+);
 
-print_r( $service->getData( '노트북' ) );
+$google = new GoogleSearchApi();
+
+$facebook = new FacebookSearchApi(
+	array('app_id' => '436496296365311',
+	      'app_secret' => '05f5cfeb5ffcfb9f4024bdeca8f5579c'
+	)
+);
+
+$service = new SearchService();
+$service->setSearchApi($facebook);
+
+echo '<meta charset="utf-8">';
+
+print_r($service->getData('제주도'));
