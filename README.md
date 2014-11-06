@@ -2,6 +2,7 @@
 This is sns search api library
 
 ##Support sns
+* Facebook
 * Twitter
 * Naver
 * Daum
@@ -10,21 +11,33 @@ This is sns search api library
 ##How to use
 
 ```
-$twitter = new \classes\api\search\impl\TwitterSearchApi( array(
-	'oauth_access_token'        => "",
+$twitter = new TwitterSearchApi(array(
+	'oauth_access_token' => "",
 	'oauth_access_token_secret' => "",
-	'consumer_key'              => "",
-	'consumer_secret'           => ""
-) );
+	'consumer_key' => "",
+	'consumer_secret' => ""
+));
 
-$naver  = new \classes\api\search\impl\NaverSearchApi( array( 'api_key' => '' ) );
-$daum   = new \classes\api\search\impl\DaumSearchApi( array( 'api_key' => '' ) );
-$google = new \classes\api\search\impl\GoogleSearchApi();
+$naver = new NaverSearchApi(
+	array('api_key' => ' ')
+);
 
-$service = new \classes\api\search\service\SearchService();
-$service->setSearchApi( $naver );
+$daum = new DaumSearchApi(
+	array('api_key' => '')
+);
 
-var_dump( $service->getData( '노트북' ) );
+$google = new GoogleSearchApi();
+
+$facebook = new FacebookSearchApi(
+	array('app_id' => '',
+	      'app_secret' => ''
+	)
+);
+
+$service = new SearchService();
+$service->setSearchApi($facebook);
+
+print_r($service->getData('Test'));
 ```
 
 [Make by Saweb] (http://www.saweb.co.kr)

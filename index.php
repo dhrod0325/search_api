@@ -26,14 +26,12 @@ $daum = new DaumSearchApi(
 $google = new GoogleSearchApi();
 
 $facebook = new FacebookSearchApi(
-	array('app_id' => '436496296365311',
-	      'app_secret' => '05f5cfeb5ffcfb9f4024bdeca8f5579c'
+	array('app_id' => '',
+	      'app_secret' => ''
 	)
 );
 
 $service = new SearchService();
 $service->setSearchApi($facebook);
 
-echo '<meta charset="utf-8">';
-
-print_r($service->getData('제주도'));
+print_r($service->getData('Test'));
