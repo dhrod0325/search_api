@@ -31,4 +31,11 @@ $service->setSearchApi( $facebook );
 print_r( $service->getData( 'Test' ) );
 ```
 
+## total count
+1. naver : http://developer.naver.com/wiki/pages/SrchWeb (total)
+2. facebook : count($result) 
+3. twitter : next_results
+
 [Make by Saweb] (http://www.saweb.co.kr)
+
+

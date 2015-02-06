@@ -27,6 +27,6 @@ class FacebookSearchApi extends BaseSearchApi {
 		$params = array_merge($params, $args);
 		$data   = $app->get('search', $params);
 
-		return $data['data'];
+		return $data;
 	}
 }

@@ -19,6 +19,7 @@ class DefaultClient implements SearchClient {
 
 		$curl = $this->getDefaultCurl( $header );
 		curl_setopt( $curl, CURLOPT_URL, $url );
+
 		$result = curl_exec( $curl );
 
 		curl_close( $curl );
@@ -31,7 +32,6 @@ class DefaultClient implements SearchClient {
 		curl_setopt( $curl, CURLOPT_URL, $url );
 		curl_setopt( $curl, CURLOPT_POST, true );
 		curl_setopt( $curl, CURLOPT_POSTFIELDS, $params );
-
 		$result = curl_exec( $curl );
 		curl_close( $curl );
 

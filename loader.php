@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'lib/TwitterAPIExchange.php';
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'lib/google-api/autoload.php';
 
 function autoLoad($className) {
 	$path = str_replace('\\', DIRECTORY_SEPARATOR, $className);

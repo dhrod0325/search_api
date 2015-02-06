@@ -14,7 +14,7 @@ class NaverSearchApi extends BaseSearchApi {
 	function getData($query, $args = array()) {
 		$params           = array();
 		$params['key']    = $this->getApiKey();
-		$params['target'] = 'shop';
+		$params['target'] = 'webkr';
 		$params['query']  = $query;
 
 		$params = array_merge($params, $args);
